@@ -22,7 +22,7 @@ def batch_process():
             proposal = clean_text(row['Proposal'])
 
             group = random.choice(["Improvement Feedback", "Redundancy Feedback"])
-            feedback = generate_feedback(proposal, group, model, tokenizer)
+            feedback = generate_feedback(user_id, proposal, group, model, tokenizer)
 
             results.append({
                 "user_id": user_id,

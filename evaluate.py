@@ -4,7 +4,7 @@ from utils import load_model
 
 model, tokenizer = load_model()
 
-def generate_feedback(proposal, group):
+def generate_feedback(user_id, proposal, group):
 
     improvement_few_shot = """
 
@@ -63,4 +63,4 @@ Please identify 3-4 aspects of the following solution that are either redundant,
     outputs = model.generate(inputs["input_ids"], max_length=512, temperature=0.7)
     feedback = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-    return {"proposal": proposal, "group": group, "feedback": feedback}
+    return {"user_id": user_id, "proposal": proposal, "group": group, "feedback": feedback}
